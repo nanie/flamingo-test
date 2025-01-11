@@ -14,7 +14,6 @@ namespace Flamingo.Board
         {
             public int? Minigame { get; set; }
             public Direction Next { get; set; }
-            public Direction Previous { get; set; }
         }
         public Tile[] Tiles { get; set; }
     }
