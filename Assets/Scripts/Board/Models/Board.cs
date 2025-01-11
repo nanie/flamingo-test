@@ -10,7 +10,6 @@ namespace Flamingo.Board
         {
             Left, Right, Front, Back
         }
-
         public struct Tile
         {
             public int? Minigame { get; set; }

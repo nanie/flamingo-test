@@ -4,6 +4,6 @@ namespace Flamingo.GameLoop.Signals
 {
     public class TurnStartedSignal
     {
-        public Vector3[] TilePositions; 
+        public Vector3[] TilePositions { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace Flamingo.GameLoop
 {
     public class BoardLoadedSignal
     {
-        public Vector3[] TilePositions;
+        public Vector3[] TilePositions { get; set; }
     }
 }
