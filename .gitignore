@@ -26,6 +26,9 @@
 # Visual Studio cache directory
 .vs/
 
+# Rider directory
+.idea/
+
 # Gradle cache directory
 .gradle/
 
@@ -59,7 +62,6 @@ sysinfo.txt
 *.apk
 *.aab
 *.unitypackage
-*.unitypackage.meta
 *.app
 
 # Crashlytics generated file

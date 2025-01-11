@@ -1,0 +1,25 @@
+{
+  "ID": "80cb8d34-2793-44b6-a797-217ce3c9587d",
+  "QuestionType": 0,
+  "Question": "What is the capital of Germany?",
+  "CustomImageID": "loc_berlin",
+  "Answers": [
+    {
+      "ImageID": null,
+      "Text": "Berlin"
+    },
+    {
+      "ImageID": null,
+      "Text": "Riga"
+    },
+    {
+      "ImageID": null,
+      "Text": "Prague"
+    },
+    {
+      "ImageID": null,
+      "Text": "Amsterdam"
+    }
+  ],
+  "CorrectAnswerIndex": 0
+}

@@ -1,0 +1,25 @@
+{
+  "ID": "085e0503-f3b3-49d8-8d2d-6f833ce403d3",
+  "QuestionType": 1,
+  "Question": "Which flag belongs to Canada?",
+  "CustomImageID": null,
+  "Answers": [
+    {
+      "ImageID": "ie",
+      "Text": null
+    },
+    {
+      "ImageID": "nz",
+      "Text": null
+    },
+    {
+      "ImageID": "us",
+      "Text": null
+    },
+    {
+      "ImageID": "ca",
+      "Text": null
+    }
+  ],
+  "CorrectAnswerIndex": 3
+}
