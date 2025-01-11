@@ -1,0 +1,18 @@
+{
+    "name": "Flamingo.Board.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cc2e526d56ee5574a9be3f79b6475c83"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
