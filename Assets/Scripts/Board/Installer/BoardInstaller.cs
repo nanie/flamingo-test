@@ -1,4 +1,5 @@
 using Flamingo.Board;
+using Flamingo.GameLoop;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class BoardInstaller : ScriptableObjectInstaller<BoardInstaller>
     [SerializeField] private TextAsset _jsonTest;
     public override void InstallBindings()
     {
+        Container.DeclareSignal<BoardLoadedSignal>();
         Container.BindInterfacesAndSelfTo<BoardLoader>().AsSingle().WithArguments(_jsonTest.text, _tilePrefabs, _basicTilePrefab).NonLazy();
         Container.BindFactory<Tile.TileSettings, Tile, Tile.Factory>();
     }

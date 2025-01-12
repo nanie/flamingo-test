@@ -1,3 +1,4 @@
+using Flamingo.GameLoop;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,24 +14,27 @@ namespace Flamingo.Board
         private const float TILE_DISTANCE = 0.8f;
         private List<GameObject> _tilePrefabs;
         private GameObject _baseTile;
-
-        public BoardLoader(Tile.Factory tileFactory, string boardDefinitionJson, List<GameObject> specialTilePrefabs, GameObject baseTile)
+        readonly SignalBus _signalBus;
+        public BoardLoader(SignalBus signalBus, Tile.Factory tileFactory, string boardDefinitionJson, List<GameObject> specialTilePrefabs, GameObject baseTile)
         {
+            _signalBus = signalBus;
             _tileFactory = tileFactory;
             _currentLoaded = JsonConvert.DeserializeObject<Board>(boardDefinitionJson);
-            _tilePrefabs = specialTilePrefabs;    
+            _tilePrefabs = specialTilePrefabs;
             _baseTile = baseTile;
         }
         public void Initialize()
         {
+            List<Vector3> positions = new List<Vector3>();
             Vector3 position = Vector3.zero;
             foreach (var item in _currentLoaded.Tiles)
             {
+                positions.Add(position);
                 CreateTile(position, item);
                 position = GetPosition(position, item.Next);
             }
+            _signalBus.Fire(new BoardLoadedSignal { TilePositions = positions.ToArray() });
         }
-
         private void CreateTile(Vector3 position, Board.Tile item)
         {
             Tile newTile = _tileFactory.Create(new Tile.TileSettings
