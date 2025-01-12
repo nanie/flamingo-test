@@ -11,25 +11,41 @@ namespace Flamingo.Board
         private List<Tile> _tiles = new List<Tile>();
         private Tile.Factory _tileFactory;
         private const float TILE_DISTANCE = 0.8f;
-        public BoardLoader(Tile.Factory tileFactory, string boardDefinitionJson)
+        private List<GameObject> _tilePrefabs;
+        private GameObject _baseTile;
+
+        public BoardLoader(Tile.Factory tileFactory, string boardDefinitionJson, List<GameObject> specialTilePrefabs, GameObject baseTile)
         {
-            _currentLoaded = JsonConvert.DeserializeObject<Board>(boardDefinitionJson);
             _tileFactory = tileFactory;
+            _currentLoaded = JsonConvert.DeserializeObject<Board>(boardDefinitionJson);
+            _tilePrefabs = specialTilePrefabs;    
+            _baseTile = baseTile;
         }
         public void Initialize()
         {
             Vector3 position = Vector3.zero;
             foreach (var item in _currentLoaded.Tiles)
             {
-                _tiles.Add(_tileFactory.Create(new Tile.TileSettings
-                {
-                    position = position,
-                    hasMinigame = item.Minigame.HasValue,
-                    index = item.Minigame ?? -1
-                }));
+                CreateTile(position, item);
                 position = GetPosition(position, item.Next);
             }
         }
+
+        private void CreateTile(Vector3 position, Board.Tile item)
+        {
+            Tile newTile = _tileFactory.Create(new Tile.TileSettings
+            {
+                position = position,
+                hasMinigame = item.Minigame.HasValue,
+                index = item.Minigame ?? -1
+            });
+
+            _tiles.Add(newTile);
+
+            TileView newTileView = GameObject.Instantiate(item.Minigame.HasValue ? _tilePrefabs[item.Minigame ?? 0] : _baseTile).AddComponent<TileView>();
+            newTileView.Initialize(newTile);
+        }
+
         private Vector3 GetPosition(Vector3 lastPosition, Board.Direction direction)
         {
             return direction switch

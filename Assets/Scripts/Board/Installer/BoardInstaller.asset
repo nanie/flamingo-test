@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb43f95ab4e12ef40b5f90f76162410a, type: 3}
   m_Name: BoardInstaller
   m_EditorClassIdentifier: 
-  _basicTilePrefab: {fileID: 3110542211769758708, guid: 0fc80274548ed924d8ee9d36a993b740,
+  _basicTilePrefab: {fileID: 6008838703116962831, guid: e86a64a168547422db6122e2668271de,
     type: 3}
   _tilePrefabs:
-  - {fileID: 3110542211769758708, guid: e417b64c72496fc44901b5f0f69fdd23, type: 3}
-  - {fileID: 3110542211769758708, guid: 10c042214f786f24a8801d93db9971e9, type: 3}
-  _jsonTest: {fileID: 4900000, guid: 852cba737baa49443bf58f80fa5e294c, type: 3}
+  - {fileID: 7448905105884111271, guid: a982abbc2c3a83449a08928b9ccfc90f, type: 3}
+  - {fileID: 7448905105884111271, guid: 802a3102a2421d44f99df22234ebdbbe, type: 3}
+  _jsonTest: {fileID: 4900000, guid: 25f84bbda7184f74982b732bfc592058, type: 3}
