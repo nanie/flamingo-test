@@ -615,6 +615,24 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &443090729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5517808263013071344, guid: 3e7cb15866b2044c4821d261c3bfeeb2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2018558639}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &443090731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443090729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fd337f2c844e14ebd85f332094068b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &464777702
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 660250778}
   - component: {fileID: 660250777}
+  - component: {fileID: 660250779}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -876,7 +895,8 @@ MonoBehaviour:
   _scriptableObjectInstallers:
   - {fileID: 11400000, guid: 55a118b864ac7544db57c55494b64e76, type: 2}
   - {fileID: 11400000, guid: 18522e0fdfa5c314a97ce3e8b070cea9, type: 2}
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 660250779}
   _installerPrefabs: []
   _findSiblingMonoInstallers: 0
   _autoRun: 1
@@ -910,6 +930,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &660250779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660250776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7d6a1a1e935484d91b02064356fba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &746421853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,7 +1576,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5517808263013071344, guid: 3e7cb15866b2044c4821d261c3bfeeb2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 443090731}
   m_SourcePrefab: {fileID: 100100000, guid: 3e7cb15866b2044c4821d261c3bfeeb2, type: 3}
 --- !u!1001 &5152446221303807193
 PrefabInstance:
