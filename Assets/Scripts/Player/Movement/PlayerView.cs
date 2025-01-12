@@ -14,6 +14,7 @@ namespace Flamingo.Player
         [SerializeField] private float _pauseInterval = 1f;
         [SerializeField] private Ease _easing = Ease.InOutSine;
         [SerializeField] private Transform _cameraPivot;
+        [SerializeField] private ParticleSystem _particle;
 
         private void OnEnable()
         {
@@ -47,6 +48,7 @@ namespace Flamingo.Player
 
         private void OnCompleteMovement()
         {
+            _particle.Play();
             _playerMovement.FinishMovement();
         }
     }
