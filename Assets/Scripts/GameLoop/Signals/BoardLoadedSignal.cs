@@ -1,11 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Flamingo.GameLoop
+namespace Flamingo.GameLoop.Signals
 {
     public class BoardLoadedSignal
     {
-        public Vector3[] TilePositions { get; set; }
+        public struct Tile
+        {
+            public Vector3 Position { get; set; }
+            public int? Minigame { get; set; }
+        }
+
+        public Tile[] Tiles { get; set; }
     }
 }

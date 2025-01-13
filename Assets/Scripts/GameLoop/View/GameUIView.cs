@@ -12,12 +12,28 @@ namespace Flamingo.GameLoop
 
         private void Awake()
         {
-            _startTurnButton.onClick.AddListener(OnButtonClicked);
+            _startTurnButton.onClick.AddListener(OnButtonClicked);     
+        }
+
+        private void OnEnable()
+        {
+            controller.OnTurnEnded += OnTurnEnded;
+        }
+
+        private void OnDisable()
+        {
+            controller.OnTurnEnded -= OnTurnEnded;
+        }
+
+        private void OnTurnEnded()
+        {
+            _startTurnButton.interactable = true;
         }
 
         private void OnButtonClicked()
         {
             controller.StartNewTurn();
+            _startTurnButton.interactable = false;
         }
     }
 }

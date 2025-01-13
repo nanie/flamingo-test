@@ -1,6 +1,5 @@
 using Flamingo.Board;
-using Flamingo.GameLoop;
-using System;
+using Flamingo.GameLoop.Signals;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;

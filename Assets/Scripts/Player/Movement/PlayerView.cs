@@ -19,11 +19,13 @@ namespace Flamingo.Player
         private void OnEnable()
         {
             _playerMovement.OnPlayerStartMovement += OnMove;
-        }
+            _playerMovement.OnPlayerTurnEnded += OnTurnEnded;
+        }     
 
         private void OnDisable()
         {
             _playerMovement.OnPlayerStartMovement -= OnMove;
+            _playerMovement.OnPlayerTurnEnded -= OnTurnEnded;
         }
 
         private void OnMove(Vector3[] path)
@@ -48,8 +50,14 @@ namespace Flamingo.Player
 
         private void OnCompleteMovement()
         {
-            _particle.Play();
             _playerMovement.FinishMovement();
+        }
+        private void OnTurnEnded(bool playedMinigame, int score)
+        {
+            if(!playedMinigame)
+            {
+                _particle.Play();
+            }
         }
     }
 }

@@ -1,3 +1,4 @@
+using Flamingo.GameLoop;
 using Flamingo.GameLoop.Signals;
 using System;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Flamingo.Player
     {
         readonly SignalBus _signalBus;
         internal event Action<Vector3[]> OnPlayerStartMovement;
+        internal event Action<bool, int> OnPlayerTurnEnded;
 
         public PlayerMovement(SignalBus signalBus)
         {
@@ -26,6 +28,11 @@ namespace Flamingo.Player
         {
             OnPlayerStartMovement?.Invoke(args.TilePositions);
         }
+        internal void OnTurnEnded(TurnEndedSignal args)
+        {
+            OnPlayerTurnEnded?.Invoke(args.minigamePlayed, args.Score);
+        }
+        
         internal void FinishMovement()
         {
             _signalBus.Fire(new PlayerMovedSignal());

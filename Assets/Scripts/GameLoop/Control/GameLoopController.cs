@@ -9,9 +9,9 @@ namespace Flamingo.GameLoop
     {
         readonly SignalBus _signalBus;
 
-        internal event Action StartGame;
-        internal event Action<bool> TurnEnded;
-        private Vector3[] _positions;
+        internal event Action OnGameStarted;
+        internal event Action OnTurnEnded;
+        private BoardLoadedSignal.Tile[] _tiles;
         private int _currentPosition = 0;
         public GameLoopController(SignalBus signalBus)
         {
@@ -27,8 +27,23 @@ namespace Flamingo.GameLoop
         }
         internal void OnBoardLoaded(BoardLoadedSignal boardLoadedSignal)
         {
-            _positions = boardLoadedSignal.TilePositions;
-            StartGame?.Invoke();
+            _tiles = boardLoadedSignal.Tiles;
+            OnGameStarted?.Invoke();
+        }
+        internal void OnPlayerMoved(PlayerMovedSignal playerMovement)
+        {
+            if (!_tiles[_currentPosition].Minigame.HasValue)
+            {
+                _signalBus.Fire(new TurnEndedSignal());
+                OnTurnEnded?.Invoke();
+                return;
+            }
+            _signalBus.Fire(new MinigameRequestedSignal { MinigameIndex = _tiles[_currentPosition].Minigame.Value });
+        }
+        internal void OnMinigameCompleted(MinigameCompletedSignal minigameCompleteData)
+        {
+            _signalBus.Fire(new TurnEndedSignal());
+            OnTurnEnded?.Invoke();
         }
         public void StartNewTurn()
         {
@@ -42,9 +57,9 @@ namespace Flamingo.GameLoop
             Vector3[] pos = new Vector3[roll];
             for (int i = 0; i < roll; i++)
             {
-                pos[i] = _positions[((i + _currentPosition) % _positions.Length)];
+                pos[i] = _tiles[((i + _currentPosition + 1) % _tiles.Length)].Position;
             }
-            _currentPosition = roll + _currentPosition % _positions.Length;
+            _currentPosition = roll + _currentPosition % _tiles.Length;
             return new TurnStartedSignal { TilePositions = pos };
         }
     }

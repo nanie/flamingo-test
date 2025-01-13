@@ -1,6 +1,6 @@
 namespace Flamingo.GameLoop.Signals
 {
-    public class PlayerMovedSignal
+    public class MinigameCompletedSignal
     {
         
     }

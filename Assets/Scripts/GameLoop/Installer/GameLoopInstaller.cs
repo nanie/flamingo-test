@@ -11,8 +11,13 @@ public class GameLoopInstaller : ScriptableObjectInstaller<GameLoopInstaller>
         SignalBusInstaller.Install(Container);
         Container.DeclareSignal<BoardLoadedSignal>();
         Container.DeclareSignal<TurnStartedSignal>();
+        Container.DeclareSignal<TurnEndedSignal>();
+        Container.DeclareSignal<PlayerMovedSignal>();
+        Container.DeclareSignal<MinigameRequestedSignal>();
+        Container.DeclareSignal<MinigameCompletedSignal>();
         Container.Bind<GameLoopController>().AsSingle().NonLazy();
         Container.BindSignal<BoardLoadedSignal>().ToMethod<GameLoopController>(x => x.OnBoardLoaded).FromResolve();
-
+        Container.BindSignal<PlayerMovedSignal>().ToMethod<GameLoopController>(x => x.OnPlayerMoved).FromResolve();
+        Container.BindSignal<MinigameCompletedSignal>().ToMethod<GameLoopController>(x => x.OnMinigameCompleted).FromResolve();
     }
 }

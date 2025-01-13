@@ -1,4 +1,4 @@
-using Flamingo.GameLoop;
+using Flamingo.GameLoop.Signals;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,8 +33,24 @@ namespace Flamingo.Board
                 CreateTile(position, item);
                 position = GetPosition(position, item.Next);
             }
-            _signalBus.Fire(new BoardLoadedSignal { TilePositions = positions.ToArray() });
+            _signalBus.Fire(CreateSignalData(positions));
         }
+
+        private BoardLoadedSignal CreateSignalData(List<Vector3> positions)
+        {
+            List<BoardLoadedSignal.Tile> tiles = new List<BoardLoadedSignal.Tile>();
+
+            for (int i = 0; i < _currentLoaded.Tiles.Length; i++)
+            {
+                tiles.Add(new BoardLoadedSignal.Tile
+                {
+                    Minigame = _currentLoaded.Tiles[i].Minigame,
+                    Position = positions[i]
+                });
+            }
+            return new BoardLoadedSignal { Tiles = tiles.ToArray() };
+        }
+
         private void CreateTile(Vector3 position, Board.Tile item)
         {
             Tile newTile = _tileFactory.Create(new Tile.TileSettings

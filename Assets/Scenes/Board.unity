@@ -447,7 +447,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000000065892864, y: 0.9182103, z: -0.39609313, w: -0.000000015275072}
+  m_LocalRotation: {x: 0.000000006815332, y: 0.9182103, z: -0.39609313, w: 0.000000015799083}
   m_LocalPosition: {x: 0, y: 3.18, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -912,6 +912,7 @@ MonoBehaviour:
   _scriptableObjectInstallers:
   - {fileID: 11400000, guid: 55a118b864ac7544db57c55494b64e76, type: 2}
   - {fileID: 11400000, guid: 18522e0fdfa5c314a97ce3e8b070cea9, type: 2}
+  - {fileID: 11400000, guid: 33d0e877fc08491408e4c207010e34d1, type: 2}
   _monoInstallers:
   - {fileID: 660250779}
   _installerPrefabs: []
@@ -1397,7 +1398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105053129}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000000065892864, y: 0.9182103, z: -0.39609313, w: -0.000000015275072}
+  m_LocalRotation: {x: 0.000000006815332, y: 0.9182103, z: -0.39609313, w: 0.000000015799083}
   m_LocalPosition: {x: 0, y: 3.18, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
