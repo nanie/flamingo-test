@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df7dd93a23f1d748923dbdefc5d7894, type: 3}
-  m_Name: MinigameInstaller
+  m_Script: {fileID: 11500000, guid: b1487f5d688e4f94f828f879d599dbdc, type: 3}
+  m_Name: Built In Data_PlayerDataGroupSchema
   m_EditorClassIdentifier: 
-  _minigames:
-  - {fileID: 11400000, guid: ebf5669453318a641ae61364253b2829, type: 2}
-  - {fileID: 11400000, guid: 2854dd058c2b8cb44bfd952ee331ec19, type: 2}
+  m_Group: {fileID: 11400000, guid: ad42645ef0dc2704283fca86097ac702, type: 2}
+  m_IncludeResourcesFolders: 1
+  m_IncludeBuildSettingsScenes: 1

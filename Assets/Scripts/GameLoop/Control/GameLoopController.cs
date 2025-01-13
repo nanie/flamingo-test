@@ -8,9 +8,9 @@ namespace Flamingo.GameLoop
     public class GameLoopController : IInitializable, IDisposable
     {
         readonly SignalBus _signalBus;
-
         internal event Action OnGameStarted;
         internal event Action OnTurnEnded;
+        internal event Action<int> OnPlayerRoll;
         private BoardLoadedSignal.Tile[] _tiles;
         private int _currentPosition = 0;
         public GameLoopController(SignalBus signalBus)
@@ -52,7 +52,8 @@ namespace Flamingo.GameLoop
 
         private TurnStartedSignal GetNewTurnSignal()
         {
-            int roll = UnityEngine.Random.Range(1, 7);
+            int roll = 2;//UnityEngine.Random.Range(1, 7);
+            OnPlayerRoll.Invoke(roll);
             Debug.Log($"Player Rolled {roll}");
             Vector3[] pos = new Vector3[roll];
             for (int i = 0; i < roll; i++)

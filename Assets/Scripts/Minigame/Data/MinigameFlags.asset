@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df7dd93a23f1d748923dbdefc5d7894, type: 3}
-  m_Name: MinigameInstaller
+  m_Script: {fileID: 11500000, guid: a83e2a2ef7681284ebdf138a2af365c9, type: 3}
+  m_Name: MinigameFlags
   m_EditorClassIdentifier: 
-  _minigames:
-  - {fileID: 11400000, guid: ebf5669453318a641ae61364253b2829, type: 2}
-  - {fileID: 11400000, guid: 2854dd058c2b8cb44bfd952ee331ec19, type: 2}
+  id: 0
+  minigameView: {fileID: 7266205378361497267, guid: 54855817bb291c64c89151d6b33eae6d,
+    type: 3}
+  minigameContent: {fileID: 4900000, guid: 66588a69ef43e4ed288f156ecfd7e532, type: 3}

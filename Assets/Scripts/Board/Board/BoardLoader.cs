@@ -14,7 +14,7 @@ namespace Flamingo.Board
         private const float TILE_DISTANCE = 0.8f;
         private List<GameObject> _tilePrefabs;
         private GameObject _baseTile;
-        readonly SignalBus _signalBus;
+        private readonly SignalBus _signalBus;
         public BoardLoader(SignalBus signalBus, Tile.Factory tileFactory, string boardDefinitionJson, List<GameObject> specialTilePrefabs, GameObject baseTile)
         {
             _signalBus = signalBus;
@@ -25,12 +25,13 @@ namespace Flamingo.Board
         }
         public void Initialize()
         {
+            var anchor = new GameObject("BoardAnchor");
             List<Vector3> positions = new List<Vector3>();
             Vector3 position = Vector3.zero;
             foreach (var item in _currentLoaded.Tiles)
             {
                 positions.Add(position);
-                CreateTile(position, item);
+                CreateTile(position, item, anchor.transform);
                 position = GetPosition(position, item.Next);
             }
             _signalBus.Fire(CreateSignalData(positions));
@@ -51,7 +52,7 @@ namespace Flamingo.Board
             return new BoardLoadedSignal { Tiles = tiles.ToArray() };
         }
 
-        private void CreateTile(Vector3 position, Board.Tile item)
+        private void CreateTile(Vector3 position, Board.Tile item, Transform parent)
         {
             Tile newTile = _tileFactory.Create(new Tile.TileSettings
             {
@@ -62,7 +63,7 @@ namespace Flamingo.Board
 
             _tiles.Add(newTile);
 
-            TileView newTileView = GameObject.Instantiate(item.Minigame.HasValue ? _tilePrefabs[item.Minigame ?? 0] : _baseTile).AddComponent<TileView>();
+            TileView newTileView = GameObject.Instantiate(item.Minigame.HasValue ? _tilePrefabs[item.Minigame ?? 0] : _baseTile, parent).AddComponent<TileView>();
             newTileView.Initialize(newTile);
         }
 

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+using TMPro;
 
 namespace Flamingo.GameLoop
 {
@@ -9,6 +10,7 @@ namespace Flamingo.GameLoop
     {
         [Inject] private GameLoopController controller;
         [SerializeField] private Button _startTurnButton;
+        [SerializeField] private TextMeshProUGUI _rollText;
 
         private void Awake()
         {
@@ -18,16 +20,24 @@ namespace Flamingo.GameLoop
         private void OnEnable()
         {
             controller.OnTurnEnded += OnTurnEnded;
+            controller.OnPlayerRoll += PlayerRoll;
         }
 
         private void OnDisable()
         {
             controller.OnTurnEnded -= OnTurnEnded;
+            controller.OnPlayerRoll -= PlayerRoll;
+        }
+
+        private void PlayerRoll(int obj)
+        {
+            _rollText.text = obj.ToString();
         }
 
         private void OnTurnEnded()
         {
             _startTurnButton.interactable = true;
+            _rollText.text = "";
         }
 
         private void OnButtonClicked()
