@@ -11,12 +11,12 @@ public class BoardCreationTool : EditorWindow
 {
     private static bool _isEditing = false;
     private static List<Board.Tile> _tiles;
-    private static Vector3 cubePosition;
+    private static Vector3 _cubePosition;
+    private static Vector3 _deltaMove = Vector3.zero;
     private const float TILE_SIZE = 0.5f;
-    private static Vector3 deltaMove = Vector3.zero;
     private void OnEnable()
     {
-        cubePosition = Vector3.zero;
+        _cubePosition = Vector3.zero;
     }
     static BoardCreationTool()
     {
@@ -83,8 +83,8 @@ public class BoardCreationTool : EditorWindow
     private static void StartMapCreation()
     {
         _isEditing = true;
-        deltaMove = Vector3.zero;
-        cubePosition = Vector3.zero;
+        _deltaMove = Vector3.zero;
+        _cubePosition = Vector3.zero;
         _tiles = new List<Board.Tile>();
         _tiles.Add(new Board.Tile { });
     }
@@ -104,24 +104,24 @@ public class BoardCreationTool : EditorWindow
     }
     public static void DrawMoveHandle()
     {
-        var newPosition = SnapToGrid(Handles.PositionHandle(cubePosition, Quaternion.identity));
+        var newPosition = SnapToGrid(Handles.PositionHandle(_cubePosition, Quaternion.identity));
         if (newPosition == Vector3.zero)
         {
             return;
         }
 
-        deltaMove += cubePosition - newPosition;
-        cubePosition = newPosition;
+        _deltaMove += _cubePosition - newPosition;
+        _cubePosition = newPosition;
 
-        if (deltaMove.magnitude < (TILE_SIZE + 0.2F))
+        if (_deltaMove.magnitude < (TILE_SIZE + 0.2F))
         {
-            if (Mathf.Abs(deltaMove.x) > Mathf.Abs(deltaMove.z))
+            if (Mathf.Abs(_deltaMove.x) > Mathf.Abs(_deltaMove.z))
             {
-                deltaMove.z = 0;
+                _deltaMove.z = 0;
             }
             else
             {
-                deltaMove.x = 0;
+                _deltaMove.x = 0;
             }
             return;
         }
@@ -129,22 +129,36 @@ public class BoardCreationTool : EditorWindow
         int tilesToAdd = 0;
         Board.Direction direction = Board.Direction.Front;
 
-        if (Mathf.Abs(deltaMove.x) > Mathf.Abs(deltaMove.z))
+        if (Mathf.Abs(_deltaMove.x) > Mathf.Abs(_deltaMove.z))
         {
-            direction = deltaMove.x > 0 ? Board.Direction.Front : Board.Direction.Back;
-            tilesToAdd = Mathf.FloorToInt(Mathf.Abs(deltaMove.x) / (TILE_SIZE + 0.2F));
+            direction = _deltaMove.x > 0 ? Board.Direction.Front : Board.Direction.Back;
+            tilesToAdd = Mathf.FloorToInt(Mathf.Abs(_deltaMove.x) / (TILE_SIZE + 0.2F));
         }
         else
         {
-            direction = deltaMove.z < 0 ? Board.Direction.Left : Board.Direction.Right;
-            tilesToAdd = Mathf.FloorToInt(Mathf.Abs(deltaMove.z) / (TILE_SIZE + 0.2F));
+            direction = _deltaMove.z < 0 ? Board.Direction.Left : Board.Direction.Right;
+            tilesToAdd = Mathf.FloorToInt(Mathf.Abs(_deltaMove.z) / (TILE_SIZE + 0.2F));
         }
 
         AddTiles(tilesToAdd, direction);
-        deltaMove = Vector3.zero;
+        _deltaMove = Vector3.zero;
     }
     private static void AddTiles(int tilesToAdd, Board.Direction direction)
     {
+        if (_tiles.Count == 0)
+        {
+            Board.Tile newTile = new Board.Tile
+            {
+                Next = direction,
+            };
+            _tiles.Add(newTile);
+            return;
+        }
+
+        _tiles[^1] = new Board.Tile
+        {
+            Next = direction,
+        };
         for (int i = 0; i < tilesToAdd; i++)
         {
             Board.Tile newTile = new Board.Tile
