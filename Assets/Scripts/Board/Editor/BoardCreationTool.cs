@@ -11,6 +11,7 @@ public class BoardCreationTool : EditorWindow
 {
     private static bool _isEditing = false;
     private static List<Board.Tile> _tiles;
+    private static List<Vector3> _tilePositions;
     private static Vector3 _cubePosition;
     private static Vector3 _deltaMove = Vector3.zero;
     private const float TILE_SIZE = 0.5f;
@@ -26,12 +27,11 @@ public class BoardCreationTool : EditorWindow
     {
         if (_isEditing)
         {
-            Vector3 currentPosition = Vector3.zero;
-            foreach (var item in _tiles)
+            for (int i = 0; i < _tiles.Count; i++)
             {
-                DrawCube(currentPosition);
-                currentPosition = GetPosition(item.Next, currentPosition, TILE_SIZE * 2);
+                DrawCube(_tilePositions[i], i);
             }
+
             DrawMoveHandle();
             DrawEditing(sceneView);
         }
@@ -86,11 +86,12 @@ public class BoardCreationTool : EditorWindow
         _deltaMove = Vector3.zero;
         _cubePosition = Vector3.zero;
         _tiles = new List<Board.Tile>();
-        _tiles.Add(new Board.Tile { });
+        _tilePositions = new List<Vector3>();
+        AddFirstTile();
     }
-    public static void DrawCube(Vector3 position)
+    public static void DrawCube(Vector3 position, int tileIndex)
     {
-        Handles.color = Color.yellow;
+        Handles.color = _tiles[tileIndex].Minigame.HasValue ? Color.red : Color.yellow;
         if (Event.current.type == EventType.Repaint)
         {
             Handles.CubeHandleCap(
@@ -101,15 +102,71 @@ public class BoardCreationTool : EditorWindow
                   EventType.Repaint
                   );
         }
-    }
-    public static void DrawMoveHandle()
-    {
-        var newPosition = SnapToGrid(Handles.PositionHandle(_cubePosition, Quaternion.identity));
-        if (newPosition == Vector3.zero)
+        if (Event.current.type == EventType.MouseDown && (Event.current.button == 0 || Event.current.button == 1))
         {
-            return;
+            Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (Vector3.Distance(hit.point, position) <= TILE_SIZE / 2)
+                {
+                    Debug.Log($"Cube at {position} clicked!");
+                    var direction = _tiles[tileIndex].Next;
+                    var minigame = GetUpdatedMinigameIndex(tileIndex, Event.current.button == 0, Event.current.button == 1);
+
+                    _tiles[tileIndex] = new Board.Tile
+                    {
+                        Next = direction,
+                        Minigame = minigame
+                    };
+                    Event.current.Use(); // Consume the event
+                }
+            }
+        }
+        if(_tiles[tileIndex].Minigame.HasValue)
+        {
+            Vector3 labelPosition = position + Vector3.up * (TILE_SIZE / 2 + 0.1f);
+            Handles.Label(labelPosition, _tiles[tileIndex].Minigame.ToString(), new GUIStyle
+            {
+                fontSize = 14,
+                fontStyle = FontStyle.Bold,
+                normal = new GUIStyleState { textColor = Color.white }
+            });
+        }
+    }
+
+    private static int? GetUpdatedMinigameIndex(int tileIndex, bool leftMouseButton, bool rightMouseButton)
+    {
+        int? currentMinigame = _tiles[tileIndex].Minigame;
+        if (!currentMinigame.HasValue)
+        {
+            return 0;
         }
 
+        if(rightMouseButton && currentMinigame == 0)
+        {
+            return null;
+        }
+
+        if(rightMouseButton)
+        {
+            return currentMinigame - 1;
+        }
+
+        return currentMinigame + 1;
+    }
+
+    public static void DrawMoveHandle()
+    {
+        EditorGUI.BeginChangeCheck();
+        var newPosition = SnapToGrid(Handles.PositionHandle(_cubePosition, Quaternion.identity));
+        if (!EditorGUI.EndChangeCheck())
+        {
+            if (Event.current.type == EventType.MouseUp)
+            {
+                _cubePosition = _tilePositions[^1];
+            }
+            return;
+        }
         _deltaMove += _cubePosition - newPosition;
         _cubePosition = newPosition;
 
@@ -145,20 +202,11 @@ public class BoardCreationTool : EditorWindow
     }
     private static void AddTiles(int tilesToAdd, Board.Direction direction)
     {
-        if (_tiles.Count == 0)
-        {
-            Board.Tile newTile = new Board.Tile
-            {
-                Next = direction,
-            };
-            _tiles.Add(newTile);
-            return;
-        }
-
         _tiles[^1] = new Board.Tile
         {
             Next = direction,
         };
+        Vector3 currentPosition = _tilePositions[^1];
         for (int i = 0; i < tilesToAdd; i++)
         {
             Board.Tile newTile = new Board.Tile
@@ -166,7 +214,19 @@ public class BoardCreationTool : EditorWindow
                 Next = direction,
             };
             _tiles.Add(newTile);
+            currentPosition = GetPosition(direction, currentPosition, TILE_SIZE * 2);
+            _tilePositions.Add(currentPosition);
         }
+        _cubePosition = _tilePositions[^1];
+    }
+    private static void AddFirstTile()
+    {
+        Board.Tile newTile = new Board.Tile
+        {
+            Next = Board.Direction.Front,
+        };
+        _tiles.Add(newTile);
+        _tilePositions.Add(Vector3.zero);
     }
     private static Vector3 SnapToGrid(Vector3 position)
     {
