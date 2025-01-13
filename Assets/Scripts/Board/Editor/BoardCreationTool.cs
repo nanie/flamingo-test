@@ -105,21 +105,19 @@ public class BoardCreationTool : EditorWindow
         if (Event.current.type == EventType.MouseDown && (Event.current.button == 0 || Event.current.button == 1))
         {
             Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                if (Vector3.Distance(hit.point, position) <= TILE_SIZE / 2)
-                {
-                    Debug.Log($"Cube at {position} clicked!");
-                    var direction = _tiles[tileIndex].Next;
-                    var minigame = GetUpdatedMinigameIndex(tileIndex, Event.current.button == 0, Event.current.button == 1);
+            Bounds cubeBounds = new Bounds(position, Vector3.one * TILE_SIZE);
 
-                    _tiles[tileIndex] = new Board.Tile
-                    {
-                        Next = direction,
-                        Minigame = minigame
-                    };
-                    Event.current.Use(); // Consume the event
-                }
+            if (cubeBounds.IntersectRay(ray))
+            {
+                var direction = _tiles[tileIndex].Next;
+                var minigame = GetUpdatedMinigameIndex(tileIndex, Event.current.button == 0, Event.current.button == 1);
+
+                _tiles[tileIndex] = new Board.Tile
+                {
+                    Next = direction,
+                    Minigame = minigame
+                };
+                Event.current.Use();
             }
         }
         if(_tiles[tileIndex].Minigame.HasValue)
