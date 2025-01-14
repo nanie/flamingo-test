@@ -12,10 +12,10 @@ namespace Flamingo.Minigame
         private Minigame _current;
         private MemoryPool<Minigame> _pool;
         private List<MinigameData> _minigameData;
-        private Dictionary<Minigame, MinigameView> _viewPool;
+        private Dictionary<MinigameView, MinigameView> _viewPool;
         public MinigameController(SignalBus signalBus, Minigame.Pool minigameFactory, List<MinigameData> minigameData)
         {
-            _viewPool = new Dictionary<Minigame, MinigameView>();
+            _viewPool = new Dictionary<MinigameView, MinigameView>();
             _signalBus = signalBus;
             _pool = minigameFactory;
             _minigameData = minigameData;
@@ -37,12 +37,12 @@ namespace Flamingo.Minigame
 
                 if (index < _minigameData.Count)
                 {
-                    if (!_viewPool.ContainsKey(_current))
+                    if (!_viewPool.ContainsKey(_minigameData[index].minigameView))
                     {
                         var view = GameObject.Instantiate(_minigameData[index].minigameView).GetComponent<MinigameView>();
-                        _viewPool.Add(_current, view);
+                        _viewPool.Add(_minigameData[index].minigameView, view);
                     }
-                    _viewPool[_current].Initialize(_current);
+                    _viewPool[_minigameData[index].minigameView].Initialize(_current);
                     _current.LoadData(_minigameData[index].minigameContent.text);
                 }
                 else
