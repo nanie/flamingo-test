@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MinigameQuiz
   m_EditorClassIdentifier: 
   id: 0
-  minigameView: {fileID: 7266205378361497267, guid: 54855817bb291c64c89151d6b33eae6d,
+  minigameView: {fileID: 5891210818848667249, guid: a6191f6f056eba34ab94ddc4ca13d975,
     type: 3}
   minigameContent: {fileID: 4900000, guid: 952f70ada48f2445494217015362263b, type: 3}
