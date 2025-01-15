@@ -13,6 +13,8 @@ namespace Flamingo.Minigame
         private MemoryPool<Minigame> _pool;
         private List<MinigameData> _minigameData;
         private Dictionary<MinigameView, MinigameView> _viewPool;
+        private Dictionary<string, Sprite> _imageLibrary;
+
         public MinigameController(SignalBus signalBus, Minigame.Pool minigameFactory, List<MinigameData> minigameData)
         {
             _viewPool = new Dictionary<MinigameView, MinigameView>();

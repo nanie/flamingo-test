@@ -1,23 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Flamingo.Minigame
 {
-    public class QuizMinigameView : MinigameView
+    public class FlagMinigameView : MinigameView
     {
         [Serializable]
         public class AnswerButton
         {
             public Button button;
-            public TextMeshProUGUI label;
+            public Image image;
         }
-        [SerializeField] private Image _mainImage;
-        [SerializeField] private TextMeshProUGUI _questionText;
         [SerializeField] private AnswerButton[] _answerButtons;
+        [SerializeField] private TextMeshProUGUI _questionText;
         public override void Initialize()
         {
             for (int i = 0; i < _answerButtons.Length; i++)
@@ -40,10 +39,9 @@ namespace Flamingo.Minigame
         public override void LoadData()
         {
             _questionText.text = _minigame.Data.Question;
-            _mainImage.sprite = _minigame.GetSpriteFromCode(_minigame.Data.CustomImageID);
             for (int i = 0; i < _minigame.Data.Answers.Count; i++)
             {
-                _answerButtons[i].label.text = _minigame.Data.Answers[i].Text;
+                _answerButtons[i].image.sprite = _minigame.GetSpriteFromCode(_minigame.Data.Answers[i].ImageID);
             }
         }
         private void OnAnswerClick(int answerIndex)

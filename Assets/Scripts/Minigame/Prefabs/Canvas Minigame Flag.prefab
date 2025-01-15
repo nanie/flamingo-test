@@ -273,7 +273,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7266205378361497267}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Flamingo.Minigame.MinigameView, Flamingo.Minigame
         m_MethodName: EndGame
         m_Mode: 1
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7266205378361497267}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Flamingo.Minigame.MinigameView, Flamingo.Minigame
         m_MethodName: EndGame
         m_Mode: 1
@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7266205378361497267}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Flamingo.Minigame.MinigameView, Flamingo.Minigame
         m_MethodName: EndGame
         m_Mode: 1
@@ -2440,7 +2440,7 @@ GameObject:
   - component: {fileID: 4999321640103583098}
   - component: {fileID: 3479980120627605083}
   - component: {fileID: 3424063710003447946}
-  - component: {fileID: 7266205378361497267}
+  - component: {fileID: 3908073912245652904}
   m_Layer: 5
   m_Name: Canvas Minigame Flag
   m_TagString: Untagged
@@ -2534,7 +2534,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7266205378361497267
+--- !u!114 &3908073912245652904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2543,9 +2543,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6917427184720816596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcbd40340ad60aa4b9eb61bd72c8102f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dc7f3ec17bc4d64293786bd4d75eb9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _answerButtons:
+  - button: {fileID: 3952194725471075785}
+    image: {fileID: 8634873323179265718}
+  - button: {fileID: 9016102826951810981}
+    image: {fileID: 7970328046223111397}
+  - button: {fileID: 6794408911502969623}
+    image: {fileID: 7541392044444671623}
+  - button: {fileID: 9136100843509215096}
+    image: {fileID: 18422538223750910}
+  _questionText: {fileID: 7602030730630042672}
 --- !u!1 &6931663310416466100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,7 +2773,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7266205378361497267}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Flamingo.Minigame.MinigameView, Flamingo.Minigame
         m_MethodName: EndGame
         m_Mode: 1
@@ -4037,7 +4047,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7266205378361497267}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Flamingo.Minigame.MinigameView, Flamingo.Minigame
         m_MethodName: EndGame
         m_Mode: 1
