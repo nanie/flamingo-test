@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Flamingo.GameLoop
 {
-    public class GameLoopController :  IGameLoop
+    public class GameLoopController : IGameLoop
     {
         readonly SignalBus _signalBus;
 
@@ -37,7 +37,7 @@ namespace Flamingo.GameLoop
         {
             if (!_tiles[_currentPosition].Minigame.HasValue)
             {
-                _signalBus.Fire(new TurnEndedSignal());
+                _signalBus.Fire(new TurnEndedSignal { minigamePlayed = false, Score = 100 });
                 OnTurnEnded?.Invoke();
                 return;
             }
@@ -45,7 +45,7 @@ namespace Flamingo.GameLoop
         }
         public void OnMinigameCompleted(MinigameCompletedSignal minigameCompleteData)
         {
-            _signalBus.Fire(new TurnEndedSignal());
+            _signalBus.Fire(new TurnEndedSignal { minigamePlayed = true, Score = minigameCompleteData.Score });
             OnTurnEnded?.Invoke();
         }
         public void StartNewTurn()

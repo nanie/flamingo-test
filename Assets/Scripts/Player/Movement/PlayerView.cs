@@ -15,12 +15,13 @@ namespace Flamingo.Player
         [SerializeField] private Ease _easing = Ease.InOutSine;
         [SerializeField] private Transform _cameraPivot;
         [SerializeField] private ParticleSystem _particle;
+        [SerializeField] private Animator _animator;
 
         private void OnEnable()
         {
             _playerMovement.OnPlayerStartMovement += OnMove;
             _playerMovement.OnPlayerTurnEnded += OnTurnEnded;
-        }     
+        }
 
         private void OnDisable()
         {
@@ -30,33 +31,48 @@ namespace Flamingo.Player
 
         private void OnMove(Vector3[] path)
         {
+            _animator.SetBool("Landing", false);
+            _animator.SetBool("IsMoving", true);
+           
             Sequence sequence = DOTween.Sequence();
+            float jumpHeight = 0.5f;
             sequence.Pause();
-            Vector3 lastPostion = transform.position;
+            Vector3 lastPosition = transform.position;
             foreach (Vector3 position in path)
             {
-                Quaternion direction = Quaternion.LookRotation(position - lastPostion, Vector2.up).normalized;
+                Quaternion direction = Quaternion.LookRotation(position - lastPosition, Vector2.up).normalized;
                 if (direction.eulerAngles != _cameraPivot.forward)
                 {
-                    sequence.Append(_cameraPivot.DORotateQuaternion(direction, _movementDuration).SetEase(_easing));
+                    sequence.Join(_cameraPivot.DORotateQuaternion(direction, _movementDuration).SetEase(Ease.Linear));
                 }
-                sequence.Append(transform.DOMove(position, _movementDuration).SetEase(_easing));
-                sequence.AppendInterval(_pauseInterval);
-                lastPostion = position;
+                if (Vector3.Distance(lastPosition, position) > 0.01f)
+                {
+                    Vector3 midPoint = Vector3.Lerp(lastPosition, position, 0.5f);
+                    midPoint.y += jumpHeight;            
+                    sequence.Append(transform.DOMove(midPoint, _movementDuration / 2).SetEase(Ease.OutQuad));
+                    sequence.AppendCallback(() => _animator.SetBool("Landing", true));
+                    sequence.Append(transform.DOMove(position, _movementDuration / 2).SetEase(Ease.InQuad));
+                    sequence.AppendCallback(() => _animator.SetBool("Landing", false));
+                    lastPosition = position;
+                }
+
             }
-            sequence.OnComplete(OnCompleteMovement);
+            sequence.OnComplete(OnCompleteMovement).SetEase(_easing);
             sequence.Play();
         }
 
         private void OnCompleteMovement()
         {
+            _animator.SetBool("Landing", true);
+            _animator.SetBool("IsMoving", false);   
             _playerMovement.FinishMovement();
         }
         private void OnTurnEnded(bool playedMinigame, int score)
         {
-            if(!playedMinigame)
+            if (!playedMinigame)
             {
                 _particle.Play();
+                _animator.SetTrigger("Celebrate");
             }
         }
     }
