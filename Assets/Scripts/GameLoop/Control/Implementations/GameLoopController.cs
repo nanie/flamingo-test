@@ -7,14 +7,16 @@ namespace Flamingo.GameLoop
 {
     public class GameLoopController : IGameLoop
     {
+        private const int EMPTY_TILE_SCORE = 100;
         readonly SignalBus _signalBus;
 
         public event Action OnGameStarted;
-        public event Action OnTurnEnded;
+        public event Action<int, int> OnTurnEnded;
         public event Action<int> OnPlayerRoll;
 
         private BoardLoadedSignal.Tile[] _tiles;
         private int _currentPosition = 0;
+        private int _totalScore;
 
         public GameLoopController(SignalBus signalBus)
         {
@@ -37,16 +39,18 @@ namespace Flamingo.GameLoop
         {
             if (!_tiles[_currentPosition].Minigame.HasValue)
             {
-                _signalBus.Fire(new TurnEndedSignal { minigamePlayed = false, Score = 100 });
-                OnTurnEnded?.Invoke();
+                _totalScore += EMPTY_TILE_SCORE;
+                _signalBus.Fire(new TurnEndedSignal { minigamePlayed = false, Score = EMPTY_TILE_SCORE });
+                OnTurnEnded?.Invoke(EMPTY_TILE_SCORE, _totalScore);
                 return;
             }
             _signalBus.Fire(new MinigameRequestedSignal { MinigameIndex = _tiles[_currentPosition].Minigame.Value });
         }
         public void OnMinigameCompleted(MinigameCompletedSignal minigameCompleteData)
         {
+            _totalScore += minigameCompleteData.Score;
             _signalBus.Fire(new TurnEndedSignal { minigamePlayed = true, Score = minigameCompleteData.Score });
-            OnTurnEnded?.Invoke();
+            OnTurnEnded?.Invoke(minigameCompleteData.Score, _totalScore);
         }
         public void StartNewTurn()
         {

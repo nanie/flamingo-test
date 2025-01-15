@@ -12,7 +12,7 @@ namespace Flamingo.GameLoop
         public void StartNewTurn();
 
         public event Action OnGameStarted;
-        public event Action OnTurnEnded;
+        public event Action<int, int> OnTurnEnded;
         public event Action<int> OnPlayerRoll;
     }
 }

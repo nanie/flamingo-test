@@ -21,7 +21,8 @@ namespace Flamingo.Minigame
         {
             for (int i = 0; i < _answerButtons.Length; i++)
             {
-                _answerButtons[i].button.onClick.AddListener(() => { OnAnswerClick(i); });
+                int buttonIndex = i;
+                _answerButtons[i].button.onClick.AddListener(delegate { OnAnswerClick(buttonIndex); });
             }
         }
         public override void OnMinigameDispose()

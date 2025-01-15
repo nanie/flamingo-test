@@ -14,7 +14,8 @@ namespace Flamingo.Player
         [SerializeField] private float _pauseInterval = 1f;
         [SerializeField] private Ease _easing = Ease.InOutSine;
         [SerializeField] private Transform _cameraPivot;
-        [SerializeField] private ParticleSystem _particle;
+        [SerializeField] private ParticleSystem _particleSimple;
+        [SerializeField] private ParticleSystem _particleComplex;
         [SerializeField] private Animator _animator;
 
         private void OnEnable()
@@ -71,7 +72,12 @@ namespace Flamingo.Player
         {
             if (!playedMinigame)
             {
-                _particle.Play();
+                _particleSimple.Play();
+            }
+
+            if (playedMinigame && score > 0)
+            {
+                _particleComplex.Play();
                 _animator.SetTrigger("Celebrate");
             }
         }

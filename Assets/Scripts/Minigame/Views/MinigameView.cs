@@ -40,14 +40,5 @@ namespace Flamingo.Minigame
         {
             _minigame.EndGame();
         }
-        public Sprite GetSprite(string spriteId)
-        {
-            return null;
-            //if(_imageLibrary.ContainsKey(spriteId))
-            //{
-            //    return _imageLibrary[spriteId];
-            //}
-            //return _defaultSprite;
-        }
     }
 }

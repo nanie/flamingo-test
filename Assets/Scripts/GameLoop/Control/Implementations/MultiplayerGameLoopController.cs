@@ -9,7 +9,7 @@ namespace Flamingo.GameLoop
     public class MultiplayerGameLoopController : IGameLoop
     {
         public event Action OnGameStarted;
-        public event Action OnTurnEnded;
+        public event Action<int, int> OnTurnEnded;
         public event Action<int> OnPlayerRoll;
 
         public void Dispose()
