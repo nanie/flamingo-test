@@ -6,6 +6,7 @@ using Zenject;
 [CreateAssetMenu(fileName = "GameLoopInstaller", menuName = "Installers/GameLoopInstaller")]
 public class GameLoopInstaller : ScriptableObjectInstaller<GameLoopInstaller>
 {
+    [SerializeField] private bool isMultiplayer;
     public override void InstallBindings()
     {
         SignalBusInstaller.Install(Container);
@@ -15,9 +16,9 @@ public class GameLoopInstaller : ScriptableObjectInstaller<GameLoopInstaller>
         Container.DeclareSignal<PlayerMovedSignal>();
         Container.DeclareSignal<MinigameRequestedSignal>();
         Container.DeclareSignal<MinigameCompletedSignal>();
-        Container.Bind<GameLoopController>().AsSingle().NonLazy();
-        Container.BindSignal<BoardLoadedSignal>().ToMethod<GameLoopController>(x => x.OnBoardLoaded).FromResolve();
-        Container.BindSignal<PlayerMovedSignal>().ToMethod<GameLoopController>(x => x.OnPlayerMoved).FromResolve();
-        Container.BindSignal<MinigameCompletedSignal>().ToMethod<GameLoopController>(x => x.OnMinigameCompleted).FromResolve();
+        Container.Bind<IGameLoop>().To<GameLoopController>().AsSingle().NonLazy();
+        Container.BindSignal<BoardLoadedSignal>().ToMethod<IGameLoop>(x => x.OnBoardLoaded).FromResolve();
+        Container.BindSignal<PlayerMovedSignal>().ToMethod<IGameLoop>(x => x.OnPlayerMoved).FromResolve();
+        Container.BindSignal<MinigameCompletedSignal>().ToMethod<IGameLoop>(x => x.OnMinigameCompleted).FromResolve();
     }
 }

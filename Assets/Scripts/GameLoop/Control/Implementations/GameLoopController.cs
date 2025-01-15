@@ -5,13 +5,13 @@ using Zenject;
 
 namespace Flamingo.GameLoop
 {
-    public class GameLoopController : IInitializable, IDisposable
+    public class GameLoopController :  IGameLoop
     {
         readonly SignalBus _signalBus;
 
-        internal event Action OnGameStarted;
-        internal event Action OnTurnEnded;
-        internal event Action<int> OnPlayerRoll;
+        public event Action OnGameStarted;
+        public event Action OnTurnEnded;
+        public event Action<int> OnPlayerRoll;
 
         private BoardLoadedSignal.Tile[] _tiles;
         private int _currentPosition = 0;
@@ -28,12 +28,12 @@ namespace Flamingo.GameLoop
         {
 
         }
-        internal void OnBoardLoaded(BoardLoadedSignal boardLoadedSignal)
+        public void OnBoardLoaded(BoardLoadedSignal boardLoadedSignal)
         {
             _tiles = boardLoadedSignal.Tiles;
             OnGameStarted?.Invoke();
         }
-        internal void OnPlayerMoved(PlayerMovedSignal playerMovement)
+        public void OnPlayerMoved(PlayerMovedSignal playerMovement)
         {
             if (!_tiles[_currentPosition].Minigame.HasValue)
             {
@@ -43,7 +43,7 @@ namespace Flamingo.GameLoop
             }
             _signalBus.Fire(new MinigameRequestedSignal { MinigameIndex = _tiles[_currentPosition].Minigame.Value });
         }
-        internal void OnMinigameCompleted(MinigameCompletedSignal minigameCompleteData)
+        public void OnMinigameCompleted(MinigameCompletedSignal minigameCompleteData)
         {
             _signalBus.Fire(new TurnEndedSignal());
             OnTurnEnded?.Invoke();

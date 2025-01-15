@@ -8,7 +8,7 @@ namespace Flamingo.GameLoop
 {
     public class GameUIView : MonoBehaviour
     {
-        [Inject] private GameLoopController controller;
+        [Inject] private IGameLoop controller;
         [SerializeField] private Button _startTurnButton;
         [SerializeField] private TextMeshProUGUI _rollText;
 
