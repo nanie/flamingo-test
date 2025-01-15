@@ -58,7 +58,7 @@ namespace Flamingo.GameLoop
         }
         private TurnStartedSignal GetNewTurnSignal()
         {
-            int roll = 2;//UnityEngine.Random.Range(1, 7);
+            int roll = UnityEngine.Random.Range(1, 7);
             OnPlayerRoll.Invoke(roll);
             Debug.Log($"Player Rolled {roll}");
             Vector3[] pos = new Vector3[roll];

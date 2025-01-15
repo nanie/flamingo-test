@@ -3259,6 +3259,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2911058529474008245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2121580265666507895, guid: 54855817bb291c64c89151d6b33eae6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3825656485588541634}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703641436587460886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 482ac7c3e6935e64a929601f350eefab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4107724571940415077 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 871138604402493095, guid: 54855817bb291c64c89151d6b33eae6d,
@@ -3342,6 +3354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainImage: {fileID: 1466740162812749147}
   _questionText: {fileID: 517971456836526311}
+  _panelAnimation: {fileID: 2911058529474008245}
   _answerButtons:
   - button: {fileID: 2035543706652948407}
     label: {fileID: 645652717967405276}

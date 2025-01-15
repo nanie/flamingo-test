@@ -17,6 +17,7 @@ namespace Flamingo.Minigame
         }
         [SerializeField] private Image _mainImage;
         [SerializeField] private TextMeshProUGUI _questionText;
+        [SerializeField] private PanelSlideAnimation _panelAnimation;
         [SerializeField] private AnswerButton[] _answerButtons;
         public override void Initialize()
         {
@@ -36,7 +37,7 @@ namespace Flamingo.Minigame
         }
         public override void Hide()
         {
-            gameObject.SetActive(false);
+            _panelAnimation.Hide(() => { gameObject.SetActive(false); });           
         }
         public override void LoadData()
         {
