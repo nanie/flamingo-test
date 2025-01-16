@@ -1,12 +1,15 @@
+using Flamingo.SceneLoader;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Flamingo.GameState
 {
     public class GameStateService : IGameStateService
     {
+        [Inject] private ILoadSceneService _loadSceneService;
         public string BoardConfig => string.IsNullOrEmpty(_boardConfig) ? _defaultBoardConfig : _boardConfig;
         public LevelData[] Levels => _levels;
 
@@ -21,8 +24,7 @@ namespace Flamingo.GameState
         public void LoadLevel(LevelData level)
         {
             _boardConfig = level.board.text;
-            //TODO create a scene management service
-            SceneManager.LoadScene(1);
+            _loadSceneService.LoadGameScene();
         }
     }
 }
