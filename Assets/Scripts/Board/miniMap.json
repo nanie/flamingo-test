@@ -1,0 +1,52 @@
+{
+  "Tiles": [
+    {
+      "Minigame": null,
+      "Next": 0
+    },
+    {
+      "Minigame": null,
+      "Next": 0
+    },
+    {
+      "Minigame": null,
+      "Next": 0
+    },
+    {
+      "Minigame": null,
+      "Next": 0
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 2
+    },
+    {
+      "Minigame": null,
+      "Next": 2
+    }
+  ]
+}

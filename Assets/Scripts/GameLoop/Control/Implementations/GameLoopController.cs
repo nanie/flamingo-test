@@ -66,7 +66,7 @@ namespace Flamingo.GameLoop
             {
                 pos[i] = _tiles[((i + _currentPosition + 1) % _tiles.Length)].Position;
             }
-            _currentPosition = roll + _currentPosition % _tiles.Length;
+            _currentPosition = (roll + _currentPosition) % _tiles.Length;
             return new TurnStartedSignal { TilePositions = pos };
         }
     }

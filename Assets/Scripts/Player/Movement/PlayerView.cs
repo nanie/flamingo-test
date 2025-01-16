@@ -14,6 +14,7 @@ namespace Flamingo.Player
         [SerializeField] private float _pauseInterval = 1f;
         [SerializeField] private Ease _easing = Ease.InOutSine;
         [SerializeField] private Transform _cameraPivot;
+        [SerializeField] private Transform _playerPivot;
         [SerializeField] private ParticleSystem _particleSimple;
         [SerializeField] private ParticleSystem _particleComplex;
         [SerializeField] private Animator _animator;
@@ -45,6 +46,7 @@ namespace Flamingo.Player
                 if (direction.eulerAngles != _cameraPivot.forward)
                 {
                     sequence.Join(_cameraPivot.DORotateQuaternion(direction, _movementDuration).SetEase(Ease.Linear));
+                    sequence.Join(_playerPivot.DORotateQuaternion(direction, _movementDuration).SetEase(Ease.Linear)); 
                 }
                 if (Vector3.Distance(lastPosition, position) > 0.01f)
                 {
