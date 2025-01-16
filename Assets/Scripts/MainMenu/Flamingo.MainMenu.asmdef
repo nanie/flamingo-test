@@ -1,8 +1,11 @@
 {
-    "name": "Flamingo.GameState",
-    "rootNamespace": "Flamingo.GameState",
+    "name": "Flamingo.MainMenu",
+    "rootNamespace": "Flamingo.MainMenu",
     "references": [
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:c458034e6e4b7754e9418829c0622138",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:ee0cedb9e8cf84f4ebe0f8caa8bfa50d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

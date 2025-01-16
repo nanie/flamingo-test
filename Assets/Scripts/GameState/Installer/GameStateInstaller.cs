@@ -6,8 +6,9 @@ using Zenject;
 public class GameStateInstaller : ScriptableObjectInstaller<GameStateInstaller>
 {
     [SerializeField] private TextAsset _defaultBoardConfig;
+    [SerializeField] private LevelData[] _levels;
     public override void InstallBindings()
     {
-        Container.Bind<IGameStateService>().To<GameStateService>().AsSingle().WithArguments(_defaultBoardConfig).NonLazy();
+        Container.Bind<IGameStateService>().To<GameStateService>().AsSingle().WithArguments(_defaultBoardConfig, _levels).NonLazy();
     }
 }

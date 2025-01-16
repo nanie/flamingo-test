@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9945fb73777624ebb140d084a57c1b, type: 3}
   m_Name: GameStateInstaller
   m_EditorClassIdentifier: 
-  _defaultBoardConfig: {fileID: 4900000, guid: 852cba737baa49443bf58f80fa5e294c, type: 3}
+  _defaultBoardConfig: {fileID: 4900000, guid: b6d5f7322b688904c9bd8345a2f82b7f, type: 3}
+  _levels:
+  - {fileID: 11400000, guid: 49b9953c801a94d4e88f7b4f2580c2ee, type: 2}
+  - {fileID: 11400000, guid: 954e2bc3660a85b428c592d953b26b94, type: 2}
