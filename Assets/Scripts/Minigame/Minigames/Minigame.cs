@@ -74,6 +74,12 @@ namespace Flamingo.Minigame
                 minigame.Reset();
             }
         }
+
+        internal string GetAnswer()
+        {
+            return _minigameData.Answers[CorrectAnswerIndex].Text ?? "";
+        }
+
         internal void LoadData(string jsonData)
         {
             _minigameData = JsonConvert.DeserializeObject<Root>(jsonData);
@@ -82,7 +88,7 @@ namespace Flamingo.Minigame
 
         internal string GetResultText(int answerIndex)
         {
-            if(answerIndex == CorrectAnswerIndex)
+            if (answerIndex == CorrectAnswerIndex)
             {
                 return _localizationService.GetMessage(MESSAGE_RIGHT);
             }

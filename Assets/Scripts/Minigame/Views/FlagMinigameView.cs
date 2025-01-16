@@ -38,13 +38,13 @@ namespace Flamingo.Minigame
         }
         public override void Show()
         {
+            _answerAnimation.ResetState();
             gameObject.SetActive(true);
         }
         public override void Hide()
         {
             _panelAnimation.Hide(() =>
-            {
-                _answerAnimation.ResetState();
+            {       
                 gameObject.SetActive(false);
             });
         }

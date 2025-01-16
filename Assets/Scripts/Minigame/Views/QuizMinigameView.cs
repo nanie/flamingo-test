@@ -19,6 +19,11 @@ namespace Flamingo.Minigame
         [SerializeField] private TextMeshProUGUI _questionText;
         [SerializeField] private PanelSlideAnimation _panelAnimation;
         [SerializeField] private AnswerButton[] _answerButtons;
+        [SerializeField] private AnswerAnimation _answerAnimation;
+        [SerializeField] private TextMeshProUGUI _answerResultText;
+        [SerializeField] private TextMeshProUGUI _answerText;
+
+        private int _selectedIndex;
         public override void Initialize()
         {
             for (int i = 0; i < _answerButtons.Length; i++)
@@ -26,6 +31,7 @@ namespace Flamingo.Minigame
                 int buttonIndex = i;
                 _answerButtons[i].button.onClick.AddListener( delegate { OnAnswerClick(buttonIndex); } );
             }
+            _answerAnimation.OnMinigameCloseClick += CloseMinigame;
         }
         public override void OnMinigameDispose()
         {
@@ -50,7 +56,14 @@ namespace Flamingo.Minigame
         }
         private void OnAnswerClick(int answerIndex)
         {
-            _minigame.AnswerQuestion(answerIndex);
+            _selectedIndex = answerIndex;
+            _answerResultText.text = _minigame.GetResultText(answerIndex);
+            _answerText.text =_minigame.GetAnswer();
+            _answerAnimation.AnimateAnswer(_minigame.CorrectAnswerIndex, answerIndex);
+        }
+        private void CloseMinigame()
+        {
+            _minigame.AnswerQuestion(_selectedIndex);
         }
     }
 }
