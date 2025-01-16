@@ -5,7 +5,15 @@
       "Next": 0
     },
     {
+      "Minigame": 0,
+      "Next": 0
+    },
+    {
       "Minigame": null,
+      "Next": 0
+    },
+    {
+      "Minigame": 0,
       "Next": 0
     },
     {
@@ -17,7 +25,7 @@
       "Next": 0
     },
     {
-      "Minigame": null,
+      "Minigame": 1,
       "Next": 0
     },
     {
@@ -29,23 +37,23 @@
       "Next": 0
     },
     {
-      "Minigame": null,
+      "Minigame": 0,
       "Next": 0
     },
     {
       "Minigame": null,
-      "Next": 0
+      "Next": 2
+    },
+    {
+      "Minigame": 0,
+      "Next": 2
     },
     {
       "Minigame": null,
-      "Next": 0
+      "Next": 2
     },
     {
-      "Minigame": null,
-      "Next": 0
-    },
-    {
-      "Minigame": null,
+      "Minigame": 1,
       "Next": 2
     },
     {
@@ -65,195 +73,19 @@
       "Next": 2
     },
     {
-      "Minigame": null,
+      "Minigame": 1,
       "Next": 2
     },
     {
-      "Minigame": null,
-      "Next": 2
+      "Minigame": 0,
+      "Next": 0
     },
     {
-      "Minigame": null,
-      "Next": 2
+      "Minigame": 1,
+      "Next": 0
     },
     {
-      "Minigame": null,
-      "Next": 2
-    },
-    {
-      "Minigame": null,
-      "Next": 2
-    },
-    {
-      "Minigame": null,
-      "Next": 2
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 2
-    },
-    {
-      "Minigame": null,
-      "Next": 2
-    },
-    {
-      "Minigame": null,
-      "Next": 2
-    },
-    {
-      "Minigame": null,
-      "Next": 2
-    },
-    {
-      "Minigame": null,
-      "Next": 2
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 1
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
-      "Next": 3
-    },
-    {
-      "Minigame": null,
+      "Minigame": 0,
       "Next": 0
     },
     {
@@ -265,7 +97,7 @@
       "Next": 0
     },
     {
-      "Minigame": null,
+      "Minigame": 0,
       "Next": 0
     },
     {
@@ -273,20 +105,244 @@
       "Next": 0
     },
     {
-      "Minigame": null,
+      "Minigame": 1,
       "Next": 0
     },
     {
       "Minigame": null,
-      "Next": 0
+      "Next": 2
     },
     {
       "Minigame": null,
-      "Next": 0
+      "Next": 2
     },
     {
       "Minigame": null,
-      "Next": 0
+      "Next": 2
+    },
+    {
+      "Minigame": 0,
+      "Next": 2
+    },
+    {
+      "Minigame": 1,
+      "Next": 2
+    },
+    {
+      "Minigame": 0,
+      "Next": 2
+    },
+    {
+      "Minigame": 1,
+      "Next": 2
+    },
+    {
+      "Minigame": null,
+      "Next": 2
+    },
+    {
+      "Minigame": null,
+      "Next": 2
+    },
+    {
+      "Minigame": null,
+      "Next": 2
+    },
+    {
+      "Minigame": 0,
+      "Next": 2
+    },
+    {
+      "Minigame": null,
+      "Next": 2
+    },
+    {
+      "Minigame": 0,
+      "Next": 2
+    },
+    {
+      "Minigame": null,
+      "Next": 2
+    },
+    {
+      "Minigame": 1,
+      "Next": 2
+    },
+    {
+      "Minigame": null,
+      "Next": 2
+    },
+    {
+      "Minigame": 0,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": 1,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": 0,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": 1,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": 0,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": 0,
+      "Next": 1
+    },
+    {
+      "Minigame": 1,
+      "Next": 3
+    },
+    {
+      "Minigame": 0,
+      "Next": 3
+    },
+    {
+      "Minigame": 1,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": 0,
+      "Next": 3
+    },
+    {
+      "Minigame": 1,
+      "Next": 3
+    },
+    {
+      "Minigame": 0,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": 0,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": 0,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": 0,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": 1,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": 1,
+      "Next": 1
+    },
+    {
+      "Minigame": null,
+      "Next": 1
+    },
+    {
+      "Minigame": 1,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": 0,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
+    },
+    {
+      "Minigame": 1,
+      "Next": 3
+    },
+    {
+      "Minigame": null,
+      "Next": 3
     }
   ]
 }

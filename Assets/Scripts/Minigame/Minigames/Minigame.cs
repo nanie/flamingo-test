@@ -1,5 +1,6 @@
 using Flamingo.GameLoop.Signals;
 using Flamingo.ImageProvider;
+using Flamingo.Localization;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -29,13 +30,19 @@ namespace Flamingo.Minigame
         #endregion
 
         [Inject] private ImageLibraryProvider _imageLibrary;
+        [Inject] private ILocalizationService _localizationService;
         private readonly SignalBus _signalBus;
         public int Score { get; set; }
+        public int CorrectAnswerIndex => _minigameData.CorrectAnswerIndex;
         public event Action OnDispose;
         public event Action OnGameEnd;
         public event Action OnDataLoaded;
         public Root Data => _minigameData;
         private Root _minigameData;
+
+        private const string MESSAGE_RIGHT = "rightAnswerMessage";
+        private const string MESSAGE_WRONG = "wrongAnswerMessage";
+
         public Minigame(SignalBus signalBus)
         {
             _signalBus = signalBus;
@@ -71,6 +78,15 @@ namespace Flamingo.Minigame
         {
             _minigameData = JsonConvert.DeserializeObject<Root>(jsonData);
             OnDataLoaded.Invoke();
+        }
+
+        internal string GetResultText(int answerIndex)
+        {
+            if(answerIndex == CorrectAnswerIndex)
+            {
+                return _localizationService.GetMessage(MESSAGE_RIGHT);
+            }
+            return _localizationService.GetMessage(MESSAGE_WRONG);
         }
     }
 }

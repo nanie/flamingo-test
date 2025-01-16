@@ -913,8 +913,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rect: {fileID: 1403816229}
-  _slideDuration: 2
-  _easing: 1
+  _slideDuration: 1
+  _easing: 6
 --- !u!1 &837021543
 GameObject:
   m_ObjectHideFlags: 0

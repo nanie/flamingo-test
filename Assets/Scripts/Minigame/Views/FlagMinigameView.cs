@@ -18,7 +18,11 @@ namespace Flamingo.Minigame
         [SerializeField] private PanelSlideAnimation _panelAnimation;
         [SerializeField] private TextMeshProUGUI _questionText;
         [SerializeField] private AnswerButton[] _answerButtons;
-     
+        [SerializeField] private AnswerAnimation _answerAnimation;
+        [SerializeField] private AnswerButton _buttonCorrect;
+        [SerializeField] private TextMeshProUGUI _answerResultText;
+
+        private int _selectedIndex;
         public override void Initialize()
         {
             for (int i = 0; i < _answerButtons.Length; i++)
@@ -26,6 +30,7 @@ namespace Flamingo.Minigame
                 int buttonIndex = i;
                 _answerButtons[i].button.onClick.AddListener(delegate { OnAnswerClick(buttonIndex); });
             }
+            _answerAnimation.OnMinigameCloseClick += CloseMinigame;
         }
         public override void OnMinigameDispose()
         {
@@ -37,7 +42,11 @@ namespace Flamingo.Minigame
         }
         public override void Hide()
         {
-            _panelAnimation.Hide(() => { gameObject.SetActive(false); });
+            _panelAnimation.Hide(() =>
+            {
+                _answerAnimation.ResetState();
+                gameObject.SetActive(false);
+            });
         }
         public override void LoadData()
         {
@@ -46,10 +55,17 @@ namespace Flamingo.Minigame
             {
                 _answerButtons[i].image.sprite = _minigame.GetSpriteFromCode(_minigame.Data.Answers[i].ImageID);
             }
+            _buttonCorrect.image.sprite = _minigame.GetSpriteFromCode(_minigame.Data.Answers[_minigame.CorrectAnswerIndex].ImageID);
         }
         private void OnAnswerClick(int answerIndex)
         {
-            _minigame.AnswerQuestion(answerIndex);
+            _selectedIndex = answerIndex;
+            _answerResultText.text = _minigame.GetResultText(answerIndex);
+            _answerAnimation.AnimateAnswer(_minigame.CorrectAnswerIndex, answerIndex);
+        }
+        private void CloseMinigame()
+        {
+            _minigame.AnswerQuestion(_selectedIndex);
         }
     }
 }

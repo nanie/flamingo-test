@@ -1,0 +1,12 @@
+{
+  "messages": [
+    {
+      "Id": "rightAnswerMessage",
+      "Text": "Well done!"
+    },
+    {
+      "Id": "wrongAnswerMessage",
+      "Text": "You'll get it right next time!"
+    }
+  ]
+}

@@ -3056,6 +3056,46 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.5686275
       objectReference: {fileID: 0}
+    - target: {fileID: 5391056506762023596, guid: 54855817bb291c64c89151d6b33eae6d,
+        type: 3}
+      propertyPath: _content
+      value: 
+      objectReference: {fileID: 2641250625247075813}
+    - target: {fileID: 5391056506762023596, guid: 54855817bb291c64c89151d6b33eae6d,
+        type: 3}
+      propertyPath: _elementsToFadeOut.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391056506762023596, guid: 54855817bb291c64c89151d6b33eae6d,
+        type: 3}
+      propertyPath: _wrongAnswerGraphic.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391056506762023596, guid: 54855817bb291c64c89151d6b33eae6d,
+        type: 3}
+      propertyPath: _correctAnswerGraphic.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391056506762023596, guid: 54855817bb291c64c89151d6b33eae6d,
+        type: 3}
+      propertyPath: _wrongAnswerGraphic.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391056506762023596, guid: 54855817bb291c64c89151d6b33eae6d,
+        type: 3}
+      propertyPath: _wrongAnswerGraphic.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391056506762023596, guid: 54855817bb291c64c89151d6b33eae6d,
+        type: 3}
+      propertyPath: _wrongAnswerGraphic.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391056506762023596, guid: 54855817bb291c64c89151d6b33eae6d,
+        type: 3}
+      propertyPath: _wrongAnswerGraphic.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5650483257549243133, guid: 54855817bb291c64c89151d6b33eae6d,
         type: 3}
       propertyPath: m_AnchorMax.y
