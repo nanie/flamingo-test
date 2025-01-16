@@ -2,7 +2,8 @@
     "name": "Flamingo.SceneLoader",
     "rootNamespace": "Flamingo.SceneLoader",
     "references": [
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:ee0cedb9e8cf84f4ebe0f8caa8bfa50d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
