@@ -1,4 +1,5 @@
 using Flamingo.GameLoop.Signals;
+using Flamingo.GameState;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace Flamingo.Board
 {
     public class BoardLoader : IInitializable
     {
+        [Inject] IGameStateService gameStateService;
         private Board _currentLoaded;
         private List<Tile> _tiles = new List<Tile>();
         private Tile.Factory _tileFactory;
@@ -15,16 +17,16 @@ namespace Flamingo.Board
         private List<GameObject> _tilePrefabs;
         private GameObject _baseTile;
         private readonly SignalBus _signalBus;
-        public BoardLoader(SignalBus signalBus, Tile.Factory tileFactory, string boardDefinitionJson, List<GameObject> specialTilePrefabs, GameObject baseTile)
+        public BoardLoader(SignalBus signalBus, Tile.Factory tileFactory, List<GameObject> specialTilePrefabs, GameObject baseTile)
         {
             _signalBus = signalBus;
-            _tileFactory = tileFactory;
-            _currentLoaded = JsonConvert.DeserializeObject<Board>(boardDefinitionJson);
+            _tileFactory = tileFactory;            
             _tilePrefabs = specialTilePrefabs;
             _baseTile = baseTile;
         }
         public void Initialize()
         {
+            _currentLoaded = JsonConvert.DeserializeObject<Board>(gameStateService.BoardConfig);
             var anchor = new GameObject("BoardAnchor");
             List<Vector3> positions = new List<Vector3>();
             Vector3 position = Vector3.zero;
