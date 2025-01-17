@@ -39,6 +39,10 @@ namespace Flamingo.Minigame
         public override void Show()
         {
             _answerAnimation.ResetState();
+            foreach (var item in _answerButtons)
+            {
+                item.button.interactable = true;
+            }
             gameObject.SetActive(true);
         }
         public override void Hide()
@@ -59,6 +63,10 @@ namespace Flamingo.Minigame
         }
         private void OnAnswerClick(int answerIndex)
         {
+            foreach (var item in _answerButtons)
+            {
+                item.button.interactable = false;
+            }
             _selectedIndex = answerIndex;
             _answerResultText.text = _minigame.GetResultText(answerIndex);
             _answerAnimation.AnimateAnswer(_minigame.CorrectAnswerIndex, answerIndex);
