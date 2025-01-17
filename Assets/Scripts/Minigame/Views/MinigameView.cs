@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,16 @@ namespace Flamingo.Minigame
         public void EndGame()
         {
             _minigame.EndGame();
+        }
+        internal void UpdateMinigame(Minigame minigame)
+        {
+            _minigame.OnDispose -= Dispose;
+            _minigame.OnGameEnd -= Hide;
+            _minigame.OnDataLoaded -= OnDataLoaded;
+            _minigame = minigame;
+            _minigame.OnDispose += Dispose;
+            _minigame.OnGameEnd += Hide;
+            _minigame.OnDataLoaded += OnDataLoaded;
         }
     }
 }

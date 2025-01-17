@@ -43,8 +43,12 @@ namespace Flamingo.Minigame
                     {
                         var view = GameObject.Instantiate(_minigameData[index].minigameView).GetComponent<MinigameView>();
                         _viewPool.Add(_minigameData[index].minigameView, view);
+                        _viewPool[_minigameData[index].minigameView].Initialize(_current);
                     }
-                    _viewPool[_minigameData[index].minigameView].Initialize(_current);
+                    else
+                    {
+                        _viewPool[_minigameData[index].minigameView].UpdateMinigame(_current);
+                    }         
                     _current.LoadData(_minigameData[index].minigameContent.text, _minigameData[index].score);
                 }
                 else
