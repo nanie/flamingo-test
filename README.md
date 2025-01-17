@@ -83,6 +83,12 @@ This project is a submission for a development test, addressing the provided req
 1. Clone the repository.
 2. Open the project in Unity (tested with Unity version 2022.3.18f1).
 3. Run the scene `Menu` to start the project OR play directly the `Board` scene, running directly this scene the `Default Board` selected in the `BoardInstaller` will be loaded.
+---
+
+## Build
+You can download the latest build of the project from the following link:
+
+[Download Build](https://drive.google.com/file/d/18-rSuCw-aFqd9Mc6XQY_FAKIY16a58pj/view?usp=drive_link)
 
 ---
 
