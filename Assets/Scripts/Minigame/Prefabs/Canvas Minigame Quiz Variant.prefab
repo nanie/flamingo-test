@@ -3334,7 +3334,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _finishButton
       value: 
-      objectReference: {fileID: 101908338740300456}
+      objectReference: {fileID: 412605677795960043}
     - target: {fileID: 5391056506762023596, guid: 54855817bb291c64c89151d6b33eae6d,
         type: 3}
       propertyPath: _elementsToFadeOut.Array.size
@@ -3444,6 +3444,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 259.66373
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066055811013654488, guid: 54855817bb291c64c89151d6b33eae6d,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6853596798068322906, guid: 54855817bb291c64c89151d6b33eae6d,
         type: 3}
@@ -3609,6 +3614,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1319540267461826920}
   m_SourcePrefab: {fileID: 100100000, guid: 54855817bb291c64c89151d6b33eae6d, type: 3}
+--- !u!114 &412605677795960043 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3507926841832424489, guid: 54855817bb291c64c89151d6b33eae6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3825656485588541634}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &517971456836526311 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3613929820609888293, guid: 54855817bb291c64c89151d6b33eae6d,

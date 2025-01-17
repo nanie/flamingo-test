@@ -33,7 +33,13 @@ namespace Flamingo.Minigame
             {
                 _elementsToMove[i].originalPosition = _elementsToMove[i].rect.localPosition;
             }
-            _finishButton.onClick.AddListener(() => { OnMinigameCloseClick.Invoke(); });
+            _finishButton.onClick.AddListener(CloseButtonclick);
+        }
+
+        private void CloseButtonclick()
+        {
+            _finishButton.gameObject.SetActive(false);
+            OnMinigameCloseClick.Invoke();
         }
 
         public void AnimateAnswer(int correctIndex, int chosenIndex)
@@ -63,7 +69,7 @@ namespace Flamingo.Minigame
             sequence.AppendInterval(1f);
             sequence.Append(_correctAnswerGroup.DOFade(1, 1f)).SetEase(Ease.InCubic);
             sequence.Join(_content.DOFade(0, 1f)).SetEase(Ease.InCubic);
-            sequence.Play().OnComplete(() => { _finishButton.enabled = true; });
+            sequence.Play().OnComplete(() => { _finishButton.gameObject.SetActive(true); });
         }
 
         public void ResetState()
@@ -90,7 +96,7 @@ namespace Flamingo.Minigame
             }
             _correctAnswerGroup.alpha = 0;
             _content.alpha = 1;
-            _finishButton.enabled = false;
+            _finishButton.gameObject.SetActive(false);
             _correctAnswerGroup.gameObject.SetActive(false);
         }
     }
