@@ -2165,8 +2165,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1242297124051788976, guid: 8ef24dd7ec82ef6418c195391aa5205e,
         type: 3}
+      propertyPath: _easing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242297124051788976, guid: 8ef24dd7ec82ef6418c195391aa5205e,
+        type: 3}
       propertyPath: _movementDuration
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2577932130475942964, guid: 8ef24dd7ec82ef6418c195391aa5205e,
         type: 3}

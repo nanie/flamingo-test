@@ -42,12 +42,18 @@ namespace Flamingo.Minigame
 
         private const string MESSAGE_RIGHT = "rightAnswerMessage";
         private const string MESSAGE_WRONG = "wrongAnswerMessage";
-
+        private int _maxScore = 5000;
         public Minigame(SignalBus signalBus)
         {
             _signalBus = signalBus;
         }
-
+        public class Pool : MemoryPool<Minigame>
+        {
+            protected override void Reinitialize(Minigame minigame)
+            {
+                minigame.Reset();
+            }
+        }
         internal Sprite GetSpriteFromCode(string spriteId)
         {
             return _imageLibrary.GetSprite(spriteId);
@@ -60,29 +66,24 @@ namespace Flamingo.Minigame
         }
         public void AnswerQuestion(int choiceIndex)
         {
-            Score = choiceIndex == _minigameData.CorrectAnswerIndex ? 1000 : 0;
+            Score = choiceIndex == _minigameData.CorrectAnswerIndex ? _maxScore : 0;
             EndGame();
         }
         private void Reset()
         {
             Score = 0;
         }
-        public class Pool : MemoryPool<Minigame>
-        {
-            protected override void Reinitialize(Minigame minigame)
-            {
-                minigame.Reset();
-            }
-        }
+    
 
         internal string GetAnswer()
         {
             return _minigameData.Answers[CorrectAnswerIndex].Text ?? "";
         }
 
-        internal void LoadData(string jsonData)
+        internal void LoadData(string jsonData, int score)
         {
             _minigameData = JsonConvert.DeserializeObject<Root>(jsonData);
+            _maxScore = score;
             OnDataLoaded.Invoke();
         }
 

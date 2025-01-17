@@ -48,14 +48,14 @@ namespace Flamingo.Minigame
             sequence.Join(_correctAnswerGraphic[correctIndex].DOFade(1, 0.3f)).SetEase(Ease.Linear);
             foreach (var item in _elementsToFadeOut)
             {
-                sequence.Join(item.DOFade(0, 0.8f)).SetEase(Ease.Linear);
+                sequence.Join(item.DOFade(0, 0.3f)).SetEase(Ease.Linear);
             }
-            sequence.AppendInterval(0.5f);
+            sequence.AppendInterval(0.2f);
             foreach (var item in _elementsToMove)
             {
-                sequence.Join(item.rect.DOLocalMove(item.rectPosition.transform.localPosition, 1f));
+                sequence.Join(item.rect.DOLocalMove(item.rectPosition.transform.localPosition, 0.6f));
             }
-            sequence.AppendInterval(0.5f);
+            sequence.AppendInterval(0.1f);
             foreach (var item in _elementsToFadeIn)
             {
                 sequence.Join(item.DOFade(1, 1f)).SetEase(Ease.Linear);

@@ -16,3 +16,4 @@ MonoBehaviour:
   minigameView: {fileID: 3908073912245652904, guid: 54855817bb291c64c89151d6b33eae6d,
     type: 3}
   minigameContent: {fileID: 4900000, guid: 66588a69ef43e4ed288f156ecfd7e532, type: 3}
+  score: 5000

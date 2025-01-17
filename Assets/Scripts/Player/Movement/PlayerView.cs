@@ -52,9 +52,9 @@ namespace Flamingo.Player
                 {
                     Vector3 midPoint = Vector3.Lerp(lastPosition, position, 0.5f);
                     midPoint.y += jumpHeight;            
-                    sequence.Append(transform.DOMove(midPoint, _movementDuration / 2).SetEase(Ease.OutQuad));
+                    sequence.Append(transform.DOMove(midPoint, _movementDuration / 2).SetEase(Ease.Linear));
                     sequence.AppendCallback(() => _animator.SetBool("Landing", true));
-                    sequence.Append(transform.DOMove(position, _movementDuration / 2).SetEase(Ease.InQuad));
+                    sequence.Append(transform.DOMove(position, _movementDuration / 2).SetEase(Ease.Linear));
                     sequence.AppendCallback(() => _animator.SetBool("Landing", false));
                     lastPosition = position;
                 }

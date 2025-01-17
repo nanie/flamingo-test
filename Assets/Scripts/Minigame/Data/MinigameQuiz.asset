@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83e2a2ef7681284ebdf138a2af365c9, type: 3}
   m_Name: MinigameQuiz
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   minigameView: {fileID: 7270326927425212684, guid: a6191f6f056eba34ab94ddc4ca13d975,
     type: 3}
   minigameContent: {fileID: 4900000, guid: 952f70ada48f2445494217015362263b, type: 3}
+  score: 5000
